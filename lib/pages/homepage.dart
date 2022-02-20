@@ -1,23 +1,31 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_catelog/modals/catelog.dart';
+import 'package:flutter_catelog/widgets/drawer.dart';
+import 'package:flutter_catelog/widgets/item.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // ignore_for_file: prefer_const_constructors
-    const days = 30;
-    const text = "Welcome to $days days of flutter";
+    final dummyList = List.generate(10, (index) => CatalogModel.items[0]);
     return Scaffold(
       appBar: AppBar(
-        title: Text("Catelog App"),
+        title: const Text("Catelog App"),
       ),
-      body: Center(
-        child: Container(
-          child: Text(text),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: ListView.builder(
+          itemBuilder: (context, index) {
+            return ItemWidget(
+              item: dummyList[index],
+            );
+          },
+          itemCount: dummyList.length,
         ),
       ),
-      drawer: Drawer(),
+      drawer: const MyDrawer(),
     );
   }
 }
