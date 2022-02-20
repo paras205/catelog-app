@@ -1,11 +1,33 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'dart:convert';
 import 'package:flutter_catelog/modals/catelog.dart';
 import 'package:flutter_catelog/widgets/drawer.dart';
 import 'package:flutter_catelog/widgets/item.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  // render before build method called
+  void initState() {
+    super.initState();
+    loadData();
+  }
+
+  loadData() async {
+    final data = await rootBundle.loadString("assets/files/catelog.json");
+    print(data.toString());
+    // final decodedData = jsonDecode(data);
+
+    // var productsData = decodedData["products"];
+    // print(productsData);
+  }
 
   @override
   Widget build(BuildContext context) {
