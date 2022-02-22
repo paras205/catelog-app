@@ -6,14 +6,12 @@ class MyDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // ignore_for_file: prefer_const_constructors
     return Drawer(
       child: Container(
         color: Colors.white,
         child: ListView(
           padding: EdgeInsets.zero,
-          // ignore: prefer_const_literals_to_create_immutables
-          children: [
+          children: const [
             DrawerHeader(
                 padding: EdgeInsets.zero,
                 child: UserAccountsDrawerHeader(
